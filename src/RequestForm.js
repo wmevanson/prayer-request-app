@@ -9,11 +9,13 @@ class RequestForm extends Component {
     this.requests = this.props.prayerRequests;
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleRequestChange = this.handleRequestChange.bind(this);
-    this.handleContactChange = this.handleContactChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = { fullname: '',
                    contact: '',
-                   prayerrequest: ''
+                   prayerrequest: '',
+                   requestdate: '',
+                   answereddate: '',
+                   answered: ''
                  };
   }
 
@@ -21,16 +23,20 @@ class RequestForm extends Component {
     this.setState({fullname: event.target.value});
   }
 
-  handleContactChange(event) {
-    this.setState({contact: event.target.value});
-  }
-
   handleRequestChange(event) {
     this.setState({prayerrequest: event.target.value});
   }
 
+  handleRequestDate(event) {
+    this.setState({requestdate: this.getDate()});
+  }
+
+  getDate() {
+    return '';
+  }
+
   handleSubmit(event) {
-    let arequest = new request(this.state.fullname, this.state.prayerrequest, this.state.contact);
+    let arequest = new request(this.state.fullname, this.state.prayerrequest);
     this.requests.push(arequest);
     this.props.handler(event, this.requests);
     event.preventDefault();
@@ -47,14 +53,6 @@ class RequestForm extends Component {
           <br/>
           <input type="text" name="fullname"
             fullname={this.state.value} onChange={this.handleNameChange}
-          />
-        </label>
-        <br/>
-        <label>
-          ContactInfo:
-          <br/>
-          <input type="text" name="contact"
-            contact={this.state.value} onChange= {this.handleContactChange}
           />
         </label>
         <br/>

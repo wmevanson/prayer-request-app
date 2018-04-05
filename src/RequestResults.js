@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 
 class RequestResults extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return(
       <fieldset>

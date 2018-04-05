@@ -19,9 +19,9 @@ class App extends Component {
       requests: requestlist
     });
     if (this.state.requests.length > 0) {
-      this.requestItemsList = this.state.requests.map((requestItem) =>
-        <li key={requestItem.toString}>
-          {requestItem.fullname} - {requestItem.prayerrequest}
+      this.requestItemsList = this.state.requests.map((currElement, index) =>
+        <li key={currElement.toString}>
+          {index} - {currElement.fullname} - {currElement.prayerrequest}
         </li>
       );
     }
